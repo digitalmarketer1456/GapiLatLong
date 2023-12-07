@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>Place Autocomplete With Latitude & Longitude</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/favicon/favicon-16x16.png"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAa9ch-c7JD2uhSgvzVpDG40g-j5O8Cjs8&libraries=places"></script>
+    <script>
+      function initialize() {
+        var address = document.getElementById("pac-input");
+        // console.log(address);
+        var autocomplete = new google.maps.places.Autocomplete(address);
+        // console.log(autocomplete);
+        autocomplete.setTypes(["geocode"]);
+        google.maps.event.addListener(
+          autocomplete,
+          "place_changed",
+          function () {
+            var place = autocomplete.getPlace();
+            // console.log(place);
+
+            // if (!place.geometry) {
+            //   return;
+            // }
+
+            // var address = '';
+            // if (place.address_components) {
+            //     address = [
+            //         (place.address_components[0] && place.address_components[0].short_name || ''),
+            //         (place.address_components[1] && place.address_components[1].short_name || ''),
+            //         (place.address_components[2] && place.address_components[2].short_name || '')
+            //         ].join(' ');
+            // }
+            // console.log(address);
+            /*********************************************************************/
+            /* var address contain your autocomplete address *********************/
+            /* place.geometry.location.lat() && place.geometry.location.lat() ****/
+            /* will be used for current address latitude and longitude************/
+            /*********************************************************************/
+            // document.getElementById("lat").innerHTML =
+            //   place.geometry.location.lat();
+            // document.getElementById("long").innerHTML =
+            //   place.geometry.location.lng();
+            let lat = place.geometry.location.lat();
+            let lng = place.geometry.location.lng();
+            document.getElementById("lat").innerHTML = lat;
+            document.getElementById("long").innerHTML = lng;
+
+            // console.log(lat);
+            // console.log(lng);
+          }
+        );
+      }
+
+      google.maps.event.addDomListener(window, "load", initialize);
+    </script>
+  </head>
+  <body>
+    <div class="flex">
+      <img src="assets/img/map.png" alt="" srcset="" width="5%" height="10%">
+      <input
+        id="pac-input"
+        class="controls"
+        type="text"
+        placeholder="Enter a location"
+      />
+    </div>
+
+    <div class="flex">
+      <div id="lat"></div>
+      <div id="long"></div>
+    </div>
+  </body>
+</html>

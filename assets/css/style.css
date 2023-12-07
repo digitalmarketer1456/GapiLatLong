@@ -1,0 +1,31 @@
+.flex{
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    gap: 5px;
+    align-items: center;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    }
+#pac-input {
+    background-color: #fff;
+    padding: 10px;
+    width: 400px;
+    border: none;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    /* text-overflow: ellipsis; */
+  }
+  #pac-input:focus {
+    border: none;
+    outline: none;
+  }
+
+
+  #lat, #long{
+    margin: 10px 0;
+    /* background-color: green; */
+    /* padding: 10px 20px; */
+    color: blue;
+  }
